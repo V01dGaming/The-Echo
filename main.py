@@ -1,37 +1,44 @@
 import time
 import os
 
-TitleTB = '+==============+'
-TitleN = '|   The Echo   |'
+os.environ['P_MaxHP'] = '50'
+os.environ['P_CurrentHP'] = '45'
+os.environ['P_Gold'] = '15'
 
-def Clear():
+TitleTB = '+==============+'
+TitleN =  '|   The Echo   |'
+
+def clear():
     os.system('clear')
 
-def Options():
-    print('    NEW GAME')
-    print('      QUIT')
-    print()
 
-
-def Title():
+def title():
     print(TitleTB)
     print(TitleN)
     print(TitleTB)
 
+
+def options():
+    print('    New Game    ')
+    print('      Quit      ')
+
+
 MM = True
 
 while MM == True:
-    Clear()
-    Title()
-    Options()
+    clear()
+    title()
+    options()
+    print()
+    Choice = input('Option> ').lower()
 
-    Choice = input('Choice> ').lower()
-
-    if Choice in {'new', 'new game'}:
+    if Choice in {'quit', 'exit'}:
+        os.close(0)
+    elif Choice in {'new', 'new game'}:
         MM = False
     else:
-        Clear()
-        print('No')
+        clear()
+        print('Incorrect choice, please choose a valid option.')
         time.sleep(2)
 
-os.system('python Game/Start.py')
+os.system('python Levels/R1.py')
